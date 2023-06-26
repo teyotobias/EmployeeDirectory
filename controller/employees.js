@@ -29,6 +29,7 @@ async function index(req,res) {
     try {
         const allEmployees = await Employee.find({});
         res.render('employees/index', {
+            title: 'All Employees',
             employees: allEmployees
         })
     }
@@ -80,6 +81,7 @@ async function show(req,res) {
             return res.redirect('/employees');
         }
         res.render('employees/show', {
+            title: 'Employee Details',
             employee: selectEmployee
         });
     } catch(err) {
@@ -95,7 +97,10 @@ async function edit(req,res) {
             console.log(`Employee ${selectEmp} not found`);
             return res.status(404).send('No emplpoyee found with this id');
         }
-        res.render('employees/edit', {employee: selectEmp});
+        res.render('employees/edit', {
+            title: 'Edit Employee',
+            employee: selectEmp
+        });
     }
     catch(err) {
         console.log(err);

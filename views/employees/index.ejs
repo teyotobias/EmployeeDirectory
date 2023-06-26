@@ -1,24 +1,19 @@
 <%- include('../partials/header') %>
 
-<h2>Employee List</h2>
-<table>
+<table id="list">
   <thead>
     <tr>
       <th>Name</th>
+      <th>Position</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% employees.forEach(function(e) { %>
       <tr>
-        <td>
-            <form action="/employees/<%= e._id %>?_method=DELETE"
-                method="POST"
-                class="delete-form"
-            >
-                <button type="submit">X</button>
-            </form>
-            <a href="/employees/<%= e._id %>"><%= e.name %></a>
-        </td>
+        <td><%= e.name %></td>
+        <td><%= e.position %></td>
+        <td><a href="/employees/<%= e._id %>">DETAILS</a></td>
       </tr>
     <% }) %><!-- Close the forEach using EJS here -->
   </tbody>

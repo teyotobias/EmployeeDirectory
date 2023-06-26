@@ -1,28 +1,24 @@
 <%- include('../partials/header') %>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Department</th>
-      <th>Position</th>
-      <th>Hourly Wage</th>
-      <th>Yearly Wage</th>
-      <th>Hire Date</th>
-      <th>Date of Birth</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-        <td><%= employee.name %></td>
-        <td><%= employee.department %></td>
-        <td><%= employee.position %></td>
-        <td><%= employee.hourlyWage %></td>
-        <td><%= employee.yearlyWage %></td>
-        <td><%= employee.hired.toISOString().split('T')[0] %></td>
-        <td><%= employee.DOB.toISOString().split('T')[0] %></td>
-    </tr>
-  </tbody>
-</table>
-<a href="/employees/<%= employee._id %>/edit">Edit Employee</a>
+
+<section id="show-page">
+  <div>Name: </div>
+  <div><%= employee.name %></div>
+  <div>Department: </div>
+  <div><%= employee.department %></div>
+  <div>Position: </div>
+  <div><%= employee.position %></div>
+  <div>Hourly Wage: </div>
+  <div><%= employee.hourlyWage %></div>
+  <div>Yearly Wage: </div>
+  <div><%= employee.yearlyWage %></div>
+  <div>Hire Date: </div>
+  <div><%= employee.hired.toISOString().split('T')[0] %></div>
+  <div>Date of Birth: </div>
+  <div><%= employee.DOB.toISOString().split('T')[0] %></div>
+</section>
+
+<div id="edit">
+    <button><a class="edit"href="/employees/<%= employee._id %>/edit">Edit Employee</a></button>
+</div>
 
 <%- include('../partials/footer') %>
