@@ -1,0 +1,28 @@
+<%- include('../partials/header') %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Department</th>
+      <th>Position</th>
+      <th>Hourly Wage</th>
+      <th>Yearly Wage</th>
+      <th>Hire Date</th>
+      <th>Date of Birth</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td><%= employee.name %></td>
+        <td><%= employee.department %></td>
+        <td><%= employee.position %></td>
+        <td><%= employee.hourlyWage %></td>
+        <td><%= employee.yearlyWage %></td>
+        <td><%= employee.hired.toISOString().split('T')[0] %></td>
+        <td><%= employee.DOB.toISOString().split('T')[0] %></td>
+    </tr>
+  </tbody>
+</table>
+<a href="/employees/<%= employee._id %>/edit">Edit Employee</a>
+
+<%- include('../partials/footer') %>
