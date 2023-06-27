@@ -26,6 +26,10 @@ router.delete('/:id', employeeCtrl.delete);
 
 router.put('/:id', employeeCtrl.update);
 
+router.post('/:id/clockIn', employeeCtrl.clockIn);
+
+router.post('/:id/clockOut', employeeCtrl.clockOut);
+
 
 
 module.exports = router;

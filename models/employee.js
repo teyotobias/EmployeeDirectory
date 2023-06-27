@@ -8,7 +8,8 @@ const employeeSchema = new mongoose.Schema({
     hourlyWage: {type: Number, required: true, min: 8, max: 250},
     yearlyWage: {type: Number, required: true, min: 25000, max: 250000},
     hired: {type: Date, required: true},
-    DOB: {type: Date, required: true}
+    DOB: {type: Date, required: true},
+    present: {type: Boolean, default: false}
 })
 
 

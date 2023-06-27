@@ -22,7 +22,9 @@ module.exports = {
     create,
     delete: fireEmployee,
     edit,
-    update
+    update,
+    clockIn,
+    clockOut
 }
 
 async function index(req,res) {
@@ -39,7 +41,10 @@ async function index(req,res) {
     }
 }
 function newEmployee(req,res) {
-    res.render('employees/new', {errorMsg: ''});
+    res.render('employees/new', {
+        title: "Add Employee",
+        errorMsg: ''
+    });
 }
 async function create(req, res) {
     try {
@@ -126,3 +131,49 @@ async function update(req,res) {
     }
 }
 
+async function clockIn(req,res) {
+    try {
+        const selectEmp = await Employee.findById(req.params.id);
+        if(!selectEmp) {
+            console.log(`Employee ${selectEmp} not found`);
+            return res.status(404).send('No employee found with this id');
+        }
+        else {
+            if(selectEmp.present == true) {
+                return res.status(400).send('Employee is already clocked in');
+            }
+            selectEmp.present = true;
+            await selectEmp.save();
+            console.log(`${selectEmp} has been clocked in`);
+            return res.redirect(`/employees/${selectEmp.id}`);
+            //change where it redirects once signed in page is created
+        }
+    }
+    catch(err) {
+        console.log(err);
+        return res.status(500).send('Server error');
+    }
+}
+
+async function clockOut(req,res) {
+    try {
+        const selectEmp = await Employee.findById(req.params.id);
+        if(!selectEmp) {
+            console.log(`Employee ${selectEmp} not found`);
+            return res.status(404).send('No employee found with this id');
+        }
+        else {
+            if (selectEmp.present == false) {
+                return res.status(400).send('Employee is already clocked out');
+            }
+            selectEmp.present = false;
+            await selectEmp.save();
+            console.log(`${selectEmp.name} has been clocked out`);
+            return res.redirect(`/employees/${selectEmp.id}`);
+        }
+    }
+    catch(err) {
+        console.log(err);
+        return res.status(500).send('Server error');
+    }
+}

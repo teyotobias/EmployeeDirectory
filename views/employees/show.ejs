@@ -15,6 +15,21 @@
   <div><%= employee.hired.toISOString().split('T')[0] %></div>
   <div>Date of Birth: </div>
   <div><%= employee.DOB.toISOString().split('T')[0] %></div>
+  <div>Clocked in: </div>
+  <div><%= employee.present? 'Yes' : 'No' %></div>
+
+  <!-- Clock In/Out Buttons -->
+  <div id="clockInOut">
+    <!-- Clock In Form-->
+    <form action="/employees/<%= employee._id %>/clockIn" method="POST">
+      <button type="submit" id="clockInButton">Clock In</button>
+    </form>
+  <!-- Clock out form-->
+    <form action="/employees/<%= employee._id %>/clockOut" method="POST">
+      <button type="submit" id="clockOutButton">Clock Out</button>
+    </form>
+  </div>
+
 </section>
 
 <div id="edit">
@@ -25,3 +40,30 @@
 </div>
 
 <%- include('../partials/footer') %>
+<script>
+  window.onload = function() {
+    document.getElementById('clockInButton').onclick = function(event) {
+      var isPresent = "<%= employee.present %>";
+      var name = "<%= employee.name %>";
+      if(isPresent == 'true') {
+        event.preventDefault();
+        alert("Employee is already clocked in");
+      }
+      else {
+        alert(`Employee ${name} clocked in`);
+      }
+    }
+    document.getElementById('clockOutButton').onclick = function(event) {
+      var isPresent = "<%= employee.present %>";
+      var name = "<%= employee.name %>";
+      if(isPresent == 'false') {
+        event.preventDefault();
+        alert('Employee is already clocked out');
+      }
+      else {
+        alert(`Employee ${name} clocked out`);
+      }
+    }
+
+  }
+</script>

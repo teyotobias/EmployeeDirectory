@@ -1,6 +1,30 @@
 <%- include('../partials/header') %>
 
-<form action="/employees/<%= employee.id %>?_method=PUT" method="POST">
+
+<section id="show-page">
+  <form action="/employees/<%= employee.id %>?_method=PUT" method="POST">
+    <label>Name:</label>
+    <input type="text" id="name" name="name" value="<%= employee.name %>">
+    <label>Department:</label>
+    <input type="text" id="department" name="department" value="<%= employee.department %>">
+    <label>Position:</label>
+    <input type="text" id="position" name="position" value="<%= employee.position %>">
+    <label>Hourly Wage:</label>
+    <input type="number" id="hourlyWage" name="hourlyWage" min="8" max="250" value="<%= employee.hourlyWage %>">
+    <label>Yearly Wage:</label>
+    <input type="number" id="yearlyWage" name="yearlyWage" min="25000" max="250000" value="<%= employee.yearlyWage %>">
+    <label>Hire Date:</label>
+    <input type="date" id="hired" name="hired" value="<%= employee.hired.toISOString().split('T')[0] %>">
+    <label>Date of Birth:</label>
+    <input type="date" id="DOB" name="DOB" value="<%= employee.DOB.toISOString().split('T')[0] %>">
+    <input type="submit" value="Update Employee">
+  </form>
+</section>
+
+
+
+
+<!-- <form action="/employees/<%= employee.id %>?_method=PUT" method="POST">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" value="<%= employee.name %>">
     <label for="department">Department:</label>
@@ -16,6 +40,6 @@
     <label for="DOB">Date of Birth (YYYY-MM-DD):</label>
     <input type="date" id="DOB" name="DOB" value="<%= employee.DOB.toISOString().split('T')[0] %>">
     <button type="submit">Update Employee</button>
-</form>
+</form> -->
 
 <%- include('../partials/footer') %>
