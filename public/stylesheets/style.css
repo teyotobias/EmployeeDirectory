@@ -185,3 +185,13 @@ h2 {
   background-color: #424748;
   color: white;
 }
+
+.logo {
+  width: 50px;
+  height: auto;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}

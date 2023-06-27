@@ -8,8 +8,14 @@
   <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
-  <nav>
-    <a href="/">Home</a> | <a href="/employees/new">New Employee</a> | <a href="/employees">All Employees</a> 
+  <nav class="navbar">
+    <div>
+      <a href="/"><img src="/images/shield.png" alt="Logo" class="logo"></a>
+    </div>
+    <div>
+      <a href="/employees/new">New Employee</a> | <a href="/employees">All Employees</a>
+    </div>
+    <!-- <a href="/"><img src="/images/shield.png" alt="Logo" class="logo"></a> | <a href="/employees/new">New Employee</a> | <a href="/employees">All Employees</a>  -->
   </nav>
   <main>
     <h1><%= title %></h1>
