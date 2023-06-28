@@ -61,7 +61,7 @@ async function fireEmployee(req,res) {
     try {
         const firedEmp = await Employee.findByIdAndRemove(req.params.id);
         if(!firedEmp) {
-            return res.status(404).send('No superhero found with this id');
+            return res.status(404).send('No employee found with this id');
         }
         else {
             console.log(`${firedEmp.name} has been fired`);
@@ -91,7 +91,7 @@ async function show(req,res) {
             employee: selectEmployee
         });
     } catch(err) {
-        console.error(err);
+        console.error(err); //use THIS for error messages
         res.redirect('/employees');
     }
 }
@@ -101,7 +101,7 @@ async function edit(req,res) {
         const selectEmp = await Employee.findById(req.params.id);
         if(!selectEmp) {
             console.log(`Employee ${selectEmp} not found`);
-            return res.status(404).send('No emplpoyee found with this id');
+            return res.status(404).send('No employee found with this id');
         }
         res.render('employees/edit', {
             title: 'Edit Employee',

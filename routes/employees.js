@@ -12,21 +12,21 @@ var employeeCtrl = require('../controller/employees');
 //need delete for delete
 
 //RESTful routes notes: https://ga-students.slack.com/files/U046FNY6CN7/F05DA1G7E3X/screen_shot_2023-06-20_at_10.54.47_am.png
-router.get('/', employeeCtrl.index)
+router.get('/', employeeCtrl.index) //1
 
-router.get('/new', employeeCtrl.new);
+router.get('/new', employeeCtrl.new); //2 works with create
 
 router.get('/clocked-in', employeeCtrl.showClockedIn);
 
-router.get('/:id/edit', employeeCtrl.edit);
+router.get('/:id/edit', employeeCtrl.edit); //works with update
 
-router.get('/:id', employeeCtrl.show);
+router.get('/:id', employeeCtrl.show); //3
 
-router.post('/', employeeCtrl.create);
+router.post('/', employeeCtrl.create); //works with new
 
 router.delete('/:id', employeeCtrl.delete);
 
-router.put('/:id', employeeCtrl.update);
+router.put('/:id', employeeCtrl.update); //works with edit
 
 router.post('/:id/clockIn', employeeCtrl.clockIn);
 

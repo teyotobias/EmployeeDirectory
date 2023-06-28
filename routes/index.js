@@ -5,8 +5,7 @@ var router = express.Router();
 //NO HOME PAGE IN THIS APP
 router.get('/', function(req, res, next) {
   res.render('index', {
-    title: 'Welcome To SHIELD',
-    req: req
+    title: 'Welcome To SHIELD'
   });
 });
 
