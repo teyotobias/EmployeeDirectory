@@ -24,7 +24,8 @@ module.exports = {
     edit,
     update,
     clockIn,
-    clockOut
+    clockOut,
+    showClockedIn
 }
 
 async function index(req,res) {
@@ -175,5 +176,21 @@ async function clockOut(req,res) {
     catch(err) {
         console.log(err);
         return res.status(500).send('Server error');
+    }
+}
+
+async function showClockedIn(req,res) {
+    try {
+        const employees = await Employee.find({present: true});
+        const numPresent = employees.length;
+        res.render('employees/clocked-in', {
+            employees,
+            numPresent,
+            title: 'On Staff'
+        });
+    }
+    catch(err) {
+        console.log(err);
+        res.redirect('/');
     }
 }

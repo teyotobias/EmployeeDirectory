@@ -16,6 +16,8 @@ router.get('/', employeeCtrl.index)
 
 router.get('/new', employeeCtrl.new);
 
+router.get('/clocked-in', employeeCtrl.showClockedIn);
+
 router.get('/:id/edit', employeeCtrl.edit);
 
 router.get('/:id', employeeCtrl.show);
@@ -29,6 +31,7 @@ router.put('/:id', employeeCtrl.update);
 router.post('/:id/clockIn', employeeCtrl.clockIn);
 
 router.post('/:id/clockOut', employeeCtrl.clockOut);
+
 
 
 

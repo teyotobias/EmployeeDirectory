@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+
+<% employees.forEach(function(employee) { %>
+    <p><%= employee.name %> - <%= employee.position %></p>
+<% }); %>
+
+<div id="staff" style="text-align: center; font-size: 2em;">
+    <% if (numPresent < 5) { %>
+        Short Staffed
+    <% } else if (numPresent > 8) { %>
+        Over Staffed
+    <% } else { %>
+        Sufficiently Staffed
+    <% } %>
+
+</div>
+
+
+
+
+<%- include('../partials/footer') %>
