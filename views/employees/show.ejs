@@ -1,45 +1,47 @@
+
+<!-- with bootstrap -->
 <%- include('../partials/header') %>
 
-<section id="show-page">
-  <div>Name: </div>
-  <div><%= employee.name %></div>
-  <div>Department: </div>
-  <div><%= employee.department %></div>
-  <div>Position: </div>
-  <div><%= employee.position %></div>
-  <div>Hourly Wage: </div>
-  <div><%= employee.hourlyWage %></div>
-  <div>Yearly Wage: </div>
-  <div><%= employee.yearlyWage %></div>
-  <div>Hire Date: </div>
-  <div><%= employee.hired.toISOString().split('T')[0] %></div>
-  <div>Date of Birth: </div>
-  <div><%= employee.DOB.toISOString().split('T')[0] %></div>
-  <div>Clocked in: </div>
-  <div><%= employee.present? 'Yes' : 'No' %></div>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <table class="table show-td">
+        <tbody>
+          <tr><td>Name:</td><td><%= employee.name %></td></tr>
+          <tr><td>Department:</td><td><%= employee.department %></td></tr>
+          <tr><td>Position:</td><td><%= employee.position %></td></tr>
+          <tr><td>Hourly Wage:</td><td><%= employee.hourlyWage %></td></tr>
+          <tr><td>Yearly Wage:</td><td><%= employee.yearlyWage %></td></tr>
+          <tr><td>Hire Date:</td><td><%= employee.hired.toISOString().split('T')[0] %></td></tr>
+          <tr><td>Date of Birth:</td><td><%= employee.DOB.toISOString().split('T')[0] %></td></tr>
+          <tr><td>Clocked in:</td><td><%= employee.present? 'Yes' : 'No' %></td></tr>
+        </tbody>
+      </table>
 
-  <!-- Clock In/Out Buttons -->
-  <div id="clockInOut">
-    <!-- Clock In Form-->
-    <form action="/employees/<%= employee._id %>/clockIn" method="POST">
-      <button type="submit" id="clockInButton">Clock In</button>
-    </form>
-  <!-- Clock out form-->
-    <form action="/employees/<%= employee._id %>/clockOut" method="POST">
-      <button type="submit" id="clockOutButton">Clock Out</button>
-    </form>
+      <!-- Clock In/Out Buttons -->
+      <div class="d-flex justify-content-between my-3 mt-5">
+        <!-- Clock In Form-->
+        <form action="/employees/<%= employee._id %>/clockIn" method="POST">
+          <button type="submit" class="btn btn-primary btn-custom" id="clockInButton">Clock In</button>
+        </form>
+        <!-- Clock out form-->
+        <form action="/employees/<%= employee._id %>/clockOut" method="POST">
+          <button type="submit" class="btn btn-secondary btn-custom" id="clockOutButton">Clock Out</button>
+        </form>
+      </div>
+
+      <div class="d-flex justify-content-between my-3 mt-5">
+        <a href="/employees/<%= employee._id %>/edit" class="btn btn-info btn-custom">Edit Employee</a>
+        <form action="/employees/<%= employee._id %>?_method=DELETE" method="POST">
+          <button type="submit" class="btn btn-danger btn-custom">Delete Employee</button>
+        </form>
+      </div>
+    </div>
   </div>
-
-</section>
-
-<div id="edit">
-  <button><a class="edit"href="/employees/<%= employee._id %>/edit">Edit Employee</a></button>
-  <form style="display: inline-block" action="/employees/<%= employee._id %>?_method=DELETE" method="POST">
-    <button type="submit">Delete Employee</button>
-  </form>
 </div>
 
 <%- include('../partials/footer') %>
+
 <script>
   window.onload = function() {
     document.getElementById('clockInButton').onclick = function(event) {

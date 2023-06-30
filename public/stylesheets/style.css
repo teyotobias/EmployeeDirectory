@@ -1,59 +1,33 @@
-* {
-  box-sizing: border-box;
-  font-family: Helvetica;
-  color: #424748;
+.btn-custom {
+  width: 150px;
+  text-align: center;
+  color: #fff !important;
+  background-color: #007bff !important;
+  border-color: #007bff !important 
 }
 
 body {
-  margin: 0;
-  height: 100vh;
-  display: grid;
-  grid-template-rows: 50px 1fr;
-  grid-template-areas: 
-    "nav"
-    "main"
+  font-family: Helvetica;
+  color: #424748;
+  background: none;
 }
 
-body > nav {
-  grid-area: nav;
-  background-color: #B8C0C2;
-  display: flex;
-  justify-content:center;
-  align-items: center;
-  padding: 0 20px 0 5px;
+html, body {
+  min-height: 100%;
 }
 
-
-body > main {
-  grid-area: main;
-  display: flex;
-  flex-direction: column;
-  background-color: #E8ECEB;
-  padding: 20px;
-  overflow-y: scroll;
+html {
+  background: url('/images/18106012.jpg') center center no-repeat;
+  background-size: cover;
+}
+.logo {
+  width: 100px;
+  height: auto;
 }
 
-body > main h1:first-child {
+.container h1 {
+  text-align: center;
   margin-bottom: 50px;
-}
-
-nav > div > a {
-  margin: 20px;
-  text-decoration: none;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-nav > div > a:not(.active):not(.logo-link):hover {
-  color: white;
-  background-color: #424748;
-}
-
-
-
-nav > div > a.active:not(.logo-link) {
-  color: white;
-  cursor: default;
 }
 
 #new-form {
@@ -76,17 +50,20 @@ nav > div > a.active:not(.logo-link) {
 
 table {
   font-size: 20px;
+  table-layout: fixed;
+  width: 100%;
 }
 
-table thead th {
+table thead th  {
   padding: 5px;
   border-bottom: 2px solid #424748;
 }
-
-table td {
+/* here */
+.show-td {
   padding: 10px;
-  text-align: center;
+  text-align: center; 
 }
+
 
 #list td:nth-child(2), #list td:nth-child(3){
   min-width: 100px;
@@ -115,32 +92,29 @@ table td {
 #show-page div {
   display: flex;
   justify-content: flex-start;
-
-
 }
+
 #show-page div:nth-child(even) {
   font-weight: bold;
-  justify-content: flex-start
 }
+
 #show-page div:nth-child(odd) {
   justify-content: flex-start;
 }
+
 #edit {
   display: flex;
   justify-content: center;
   margin-top: 15vh;
 }
+
 #edit button:hover {
   background-color: red;
   font-weight: bold;
-  
-}
-#edit button > a {
-  text-decoration: none;
 }
 
-h2 {
-  text-align: center;
+#edit button > a {
+  text-decoration: none;
 }
 
 #show-page #clockInOut {
@@ -148,7 +122,6 @@ h2 {
   margin-left: 7vmin;
   display: flex;
   justify-content: space-around;
-
 }
 
 #show-page label {
@@ -187,43 +160,61 @@ h2 {
   background-color: #424748;
   color: white;
 }
-
-.logo {
-  width: 50px;
-  height: auto;
-  /* margin: 20px;
-  padding: 10px; */
-}
-
-
-/* nav > div > a {
-  margin: 20px;
-  text-decoration: none;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-nav > div > a:hover:not(.active) {
-  color: white;
-  background-color: #424748;
-}
-
-
-
-nav > div > a.active {
-  color: white;
-  cursor: default;
-} */
-
-
-
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-}
-
 #staff {
   margin-top: 55vh;
 }
 
+.col-width {
+  width: 33.33%;
+  display: block;
+}
+.index-tbl {
+  text-align: center;
+}
+
+.staff-warning {
+  color: red;
+}
+
+.staff-ok {
+  color: #007bff;
+}
+
+.new-form {
+  background-color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+a.details-button {
+  background-color: #007bff !important;
+  border-color: #007bff !important 
+}
+
+.navbar-nav .nav-link {
+  transition: background-color 0.5s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: lightgrey;
+  color: #007bff;
+}
+.marg-tbl {
+  margin-bottom: 5vmin;
+}
+
+.homeLogo {
+  position:absolute;
+  top: 20%;
+  left:50%;
+  transform: translateX(-50%);
+  
+}
+
+.bottom-center {
+  position: absolute;
+  bottom: 10vmin;
+  left: 50%;
+  transform: translateX(-50%);
+}

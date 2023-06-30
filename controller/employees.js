@@ -43,7 +43,7 @@ async function index(req,res) {
 }
 function newEmployee(req,res) {
     res.render('employees/new', {
-        title: "Add Employee",
+        title: "New Employee",
         errorMsg: ''
     });
 }

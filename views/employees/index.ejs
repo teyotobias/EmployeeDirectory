@@ -1,22 +1,24 @@
 <%- include('../partials/header') %>
 
-<table id="list">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Position</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% employees.forEach(function(e) { %>
+<div class="container mt-5 marg-tbl"> 
+  <table class="table table-hover index-tbl"> 
+    <thead>
       <tr>
-        <td><%= e.name %></td>
-        <td><%= e.position %></td>
-        <td><a href="/employees/<%= e._id %>">DETAILS</a></td>
+        <th><div class="col-width">Name</div></th>
+        <th><div class="col-width">Position</div></th>
+        <th><div class="col-width"></div></th>
       </tr>
-    <% }) %><!-- Close the forEach using EJS here -->
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% employees.forEach(function(e) { %>
+        <tr>
+          <td><div class="col-width"><%= e.name %></div></td>
+          <td><div class="col-width"><%= e.position %></div></td>
+          <td><div class="col-width"><a href="/employees/<%= e._id %>" class="btn btn-info details-button">DETAILS</a></div></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
 
 <%- include('../partials/footer') %>

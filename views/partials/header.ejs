@@ -5,17 +5,29 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Employees</title>
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'>
   <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
-  <nav class="navbar">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div>
-      <a href="/"class="logo-link"><img src="/images/shield.png" alt="Logo" class="logo"></a>
+      <a href="/" class="navbar-brand"><img src="/images/kisspng-logo-walmart-de-méxico-y-centroamérica-brand-bus-wall-art-logo-elitflat-5b6b06930fbc35.1556774815337406910645.png" alt="Logo" class="logo"></a>
     </div>
-    <div>
-      <a href="/employees">Employees</a> | <a href="/employees/new">New Employee</a> | <a href="/employees/clocked-in">On Staff</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/employees">Employees</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/employees/new">New Employee</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/employees/clocked-in">On Staff</a>
+        </li>
+      </ul>
     </div>
-    <!-- <a href="/"><img src="/images/shield.png" alt="Logo" class="logo"></a> | <a href="/employees/new">New Employee</a> | <a href="/employees">All Employees</a>  -->
   </nav>
-  <main>
+  <main class="container mt-3">
     <h1><%= title %></h1>
+
+

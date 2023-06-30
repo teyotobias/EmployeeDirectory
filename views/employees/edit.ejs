@@ -1,26 +1,89 @@
 <%- include('../partials/header') %>
-
-
-<section id="show-page">
-  <form action="/employees/<%= employee.id %>?_method=PUT" method="POST">
-    <label>Name:</label>
-    <input type="text" id="name" name="name" value="<%= employee.name %>">
-    <label>Department:</label>
-    <input type="text" id="department" name="department" value="<%= employee.department %>">
-    <label>Position:</label>
-    <input type="text" id="position" name="position" value="<%= employee.position %>">
-    <label>Hourly Wage:</label>
-    <input type="number" id="hourlyWage" name="hourlyWage" min="8" max="250" value="<%= employee.hourlyWage %>">
-    <label>Yearly Wage:</label>
-    <input type="number" id="yearlyWage" name="yearlyWage" min="25000" max="250000" value="<%= employee.yearlyWage %>">
-    <label>Hire Date:</label>
-    <input type="date" id="hired" name="hired" value="<%= employee.hired.toISOString().split('T')[0] %>">
-    <label>Date of Birth:</label>
-    <input type="date" id="DOB" name="DOB" value="<%= employee.DOB.toISOString().split('T')[0] %>">
-    <input type="submit" value="Update Employee">
-  </form>
-</section>
-
-
-
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <form action="/employees/<%= employee.id %>?_method=PUT" method="POST" class="form-group new-form">
+        <table class="table show-td">
+          <tbody>
+            <tr>
+              <td>Name:</td>
+              <td><input type="text" id="name" name="name" value="<%= employee.name %>" class="form-control"></td>
+            </tr>
+            <tr>
+              <td>Department:</td>
+              <td>
+                <select id="department" name="department" class="form-control" required>
+                  <option value=""></option>
+                  <% ['HR', 'Sales', 'Engineering', 'Marketing', 'Finance'].forEach(function(department) { %>
+                    <option value="<%= department %>" <%= employee.department == department ? 'selected' : '' %>><%= department %></option>
+                  <% }); %>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Position:</td>
+              <td>
+                <select id="position" name="position" class="form-control">
+                  <!-- Positions will be populated here based on department -->
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Hourly Wage ($):</td>
+              <td><input type="number" id="hourlyWage" name="hourlyWage" min="8" max="250" value="<%= (employee.hourlyWage).toFixed(2) %>" class="form-control"></td>
+            </tr>
+            <tr>
+              <td>Yearly Wage ($):</td>
+              <td><input type="number" id="yearlyWage" name="yearlyWage" min="25000" max="250000" value="<%= (employee.yearlyWage).toFixed(2) %>" class="form-control"></td>
+            </tr>
+            <tr>
+              <td>Hire Date:</td>
+              <td><input type="date" id="hired" name="hired" value="<%= employee.hired.toISOString().split('T')[0] %>" class="form-control"></td>
+            </tr>
+            <tr>
+              <td>Date of Birth:</td>
+              <td><input type="date" id="DOB" name="DOB" value="<%= employee.DOB.toISOString().split('T')[0] %>" class="form-control"></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="d-flex justify-content-center my-3 mt-5">
+          <button type="submit" class="btn btn-primary btn-custom">Update Employee</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 <%- include('../partials/footer') %>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function() {
+    var positions = {
+      "HR": ["HR Manager", "HR Specialist", "Recruitment Officer"],
+      "Sales": ["Sales Manager", "Sales Representative", "Sales Associate"],
+      "Engineering": ["Engineering Manager", "Software Engineer", "Hardware Engineer"],
+      "Marketing": ["Marketing Manager", "Marketing Specialist", "Product Manager"],
+      "Finance": ["Finance Manager", "Accountant", "Financial Analyst"]
+      // Add the rest of the department:positions mapping here
+    };
+
+    var initialDepartment = '<%= employee.department %>';
+    var initialPosition = '<%= employee.position %>';
+
+    populatePositions(initialDepartment, initialPosition);
+
+    $('#department').change(function() {
+      var department = $(this).val();
+      populatePositions(department);
+    });
+
+    function populatePositions(department, selectedPosition) {
+      var pos = positions[department];
+      $('#position').empty();
+      $.each(pos, function(index, value) {
+        var selectedAttr = value === selectedPosition ? 'selected' : '';
+        $('#position').append('<option value="'+ value +'" '+ selectedAttr +'>'+ value +'</option>');
+      });
+    }
+  });
+</script>

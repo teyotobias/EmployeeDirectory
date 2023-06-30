@@ -1,10 +1,27 @@
 <%- include('../partials/header') %>
 
-<% employees.forEach(function(employee) { %>
-    <p><%= employee.name %> - <%= employee.position %></p>
-<% }); %>
+<div class="container mt-5"> 
+  <table class="table table-hover index-tbl"> 
+    <thead>
+      <tr>
+        <th><div class="col-width">Name</div></th>
+        <th><div class="col-width">Position</div></th>
+        <th><div class="col-width"></div></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% employees.forEach(function(employee) { %>
+        <tr>
+          <td><div class="col-width"><%= employee.name %></div></td>
+          <td><div class="col-width"><%= employee.position %></div></td>
+          <td><div class="col-width"><a href="/employees/<%= employee._id %>" class="btn btn-info details-button">DETAILS</a></div></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
 
-<div id="staff" style="text-align: center; font-size: 2em;">
+  <div id="staff" style="text-align: center; font-size: 2em; margin-top: 2em;"
+       class="<% if (numPresent < 5 || numPresent > 8) { %>staff-warning<%} else {%>staff-ok<%} %>">
     <% if (numPresent < 5) { %>
         Short Staffed
     <% } else if (numPresent > 8) { %>
@@ -12,10 +29,8 @@
     <% } else { %>
         Sufficiently Staffed
     <% } %>
+  </div>
 
 </div>
-
-
-
 
 <%- include('../partials/footer') %>
