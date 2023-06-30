@@ -17,7 +17,7 @@ Emmet
 
 # Next Steps:
 Creating different models for users and managers/store owners
-Restrictiong functionality for different types of users (clock in out for employee, but that is it), the rest should be left for the higher ups
+Restricting functionality for different types of users (clock in out for employee, but that is it), the rest should be left for the higher ups
 Time logging shift times for employees
 Adding specific shift times for different employees
 Creating a calender for each individual employee reflecting their shift schedule
